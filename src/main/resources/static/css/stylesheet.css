@@ -23,13 +23,14 @@
     font-family:'Roboto';
 }
 
+.bluetext {
+    color: #192580;
+}
+
+
 
 
 img{
 
     width:500px;
-}
-
-.bluetext {
-    color: #192580;
 }

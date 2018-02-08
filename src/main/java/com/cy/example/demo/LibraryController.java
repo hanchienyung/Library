@@ -4,19 +4,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
 @Controller
 public class LibraryController {
+    String borrowed;
 
     @Autowired
     LibraryRepository libraryRepository;
 
     @Autowired
     BookRepository bookRepository;
+
+    @Autowired
+    AvailablebookRepository availablebookRepository;
+
+    @Autowired
+    BorrowedbookRepository borrowedbookRepository;
 
      @RequestMapping("/")
      public String listLibraries(Model model) {
@@ -26,7 +35,7 @@ public class LibraryController {
 
     @RequestMapping("/listbook")
     public String listbookForm(Model model) {
-        model.addAttribute("book", bookRepository.findAll());
+        model.addAttribute("books", bookRepository.findAll());
         return "listbook";
     }
 
@@ -44,13 +53,13 @@ public class LibraryController {
 
     @RequestMapping("/borrowbook")
     public String borrowbookForm(Model model) {
-        model.addAttribute("book", new Book());
+        model.addAttribute("availablebooks", availablebookRepository.findByHasbeenBorrowed("N"));
         return "borrowbookform";
     }
 
     @RequestMapping("/returnbook")
     public String returnbookForm(Model model) {
-        model.addAttribute("book", new Book());
+        model.addAttribute("borrowedbooks", borrowedbookRepository.findByHasbeenBorrowed("Y"));
         return "returnbookform";
     }
 
@@ -93,4 +102,6 @@ public class LibraryController {
         bookRepository.save(book);
         return "redirect:/";
     }
+
+
 }

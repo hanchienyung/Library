@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-public class Book {
+public class Borrowedbook {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -31,12 +31,9 @@ public class Book {
 
     private String image;
 
-    @Value("N")
+    @Value("Y")
     private String hasbeenBorrowed;
 
-
-    public Book() {
-    }
 
     public long getId() {
         return id;
@@ -85,6 +82,7 @@ public class Book {
     public void setImage(String image) {
         this.image = image;
     }
+
 
     public String getHasbeenBorrowed() {
         return hasbeenBorrowed;

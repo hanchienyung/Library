@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
@@ -10,36 +10,43 @@
 <body>
 <nav class="navbar navbar-expand-sm bg-light">
     <ul class="navbar-nav">
-        <!-- <li class="nav-item">
-             <a class="nav-link" href="mainpage.html">Home</a>
-         </li>
-         -->
         <li class="nav-item">
-            <a class="nav-link" href="listbook.html">List Books</a>
+             <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="addbookform.html">Add a book</a>
+            <a class="nav-link" href="listbook">List Books</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="borrowbookform.html">Borrow a book</a>
+            <a class="nav-link" href="addbook">Add a book</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="returnbookform.html">Return a book</a>
+            <a class="nav-link" href="borrowbook">Borrow a book</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="returnbook">Return a book</a>
         </li>
     </ul>
 </nav>
 <br />
-<h1> List of Books in JBC Library </h1>
+<div class="subhead bluetext"> List of Books in JBC Library </div>
 
-<div th:each="book : ${books}">
-    <span th:text="${book.title}">Book Title</span><br />
-    <span th:text="${book.author}">Book Author</span><br />
-    <span th:text="${book.publicationYr}">Year of publication</span><br />
-    <span th:text="${book.isbn}">ISBN Number</span><br />
-    <span th:text="${book.image}">Image URL</span><br />
-    <br />
-    <input type="submit" value="Add" />
+<div class="row">
+  <div class="col-sm">Title</div>
+    <div class="col-sm">Author</div>
+    <div class="col-sm">Year Published</div>
+    <div class="col-sm">ISBN</div>
+    <div class="col-sm">Image</div>
+    <div class="col-sm">Has Been Borrowed</div>
 </div>
+<div  class="row" th:each="book : ${books}">
+    <div class="col-sm" th:text="${book.title}"></div>
+    <div class="col-sm" th:text="${book.author}"></div>
+    <div class="col-sm" th:text="${book.publicationYr}"></div>
+    <div class="col-sm" th:text="${book.isbn}"></div>
+    <div class="col-sm" th:text="${book.image}"></div>
+    <div class="col-sm" th:text="${book.hasbeenBorrowed}"></div>
+</div>
+
 
 <br />
 
