@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css?family=Caveat Brush" rel="stylesheet" />
+    <link href="./css/stylesheet.css" rel="stylesheet" />
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-light">
+    <ul class="navbar-nav">
+        <!-- <li class="nav-item">
+             <a class="nav-link" href="mainpage.html">Home</a>
+         </li>
+         -->
+        <li class="nav-item">
+            <a class="nav-link" href="listbook.html">List Books</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="addbookform.html">Add a book</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="borrowbookform.html">Borrow a book</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="returnbookform.html">Return a book</a>
+        </li>
+    </ul>
+</nav>
+<br />
+<h1> List of Books in JBC Library </h1>
+
+<div th:each="book : ${books}">
+    <span th:text="${book.title}">Book Title</span><br />
+    <span th:text="${book.author}">Book Author</span><br />
+    <span th:text="${book.publicationYr}">Year of publication</span><br />
+    <span th:text="${book.isbn}">ISBN Number</span><br />
+    <span th:text="${book.image}">Image URL</span><br />
+    <br />
+    <input type="submit" value="Add" />
+</div>
+
+<br />
+
+</body>
+</html>
