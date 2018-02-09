@@ -83,7 +83,8 @@ public class LibraryController {
       /*  if (result.hasErrors()){
             return "borrowbookform";
         }*/
-       return "redirect:/";
+       return "msgcheckout";
+       //return "redirect:/";
     }
 
 
@@ -110,8 +111,8 @@ public class LibraryController {
             return "returnbookform";
         }
         bookRepository.save(book); */
-
-        return "redirect:/";
+        return "msgcheckin";
+        //return "redirect:/";
     }
 
 

@@ -15,7 +15,6 @@
     font-size:50px;
     text-align: center;
     border: none;
-    text-underline: black;
     font-family:'Roboto';
 }
 
@@ -31,9 +30,24 @@
 }
 
 
+.usermsg{
+    margin-top: 100px;
+    font-weight:normal;
+    font-size:20px;
+    text-align: center;
+    font-family:'Roboto';
+}
 
 
 img{
 
     width:100px;
+}
+
+mainpagehtml {
+    background: url(../images/library.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }

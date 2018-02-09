@@ -26,12 +26,33 @@
     font-family:'Roboto';
 }
 
+.usermsg{
+    margin-top: 100px;
+    font-weight:bold;
+    font-size:20px;
+    text-align: center;
+    font-family:'Roboto';
+}
+
+
 .bluetext {
     color: #192580;
 }
 
+#nav_bar ul li .active-page
+{
+    background-color: #ffe1fc;
+}
 
 
+
+mainpagehtml {
+    background: url(../images/library.jpeg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 
 img{
 
