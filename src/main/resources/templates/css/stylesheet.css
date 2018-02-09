@@ -11,15 +11,11 @@
 }
 
 .subhead{
-    font-weight:bold;
+    font-weight: normal;
     font-size:50px;
     text-align: center;
     border: none;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-right: 200px;
-    margin-left: 200px;
-    background-color: #56e63f;
+    text-underline: black;
     font-family:'Roboto';
 }
 

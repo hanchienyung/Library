@@ -31,11 +31,12 @@ public class Book {
 
     private String image;
 
-    @Value("N")
     private String hasbeenBorrowed;
 
 
     public Book() {
+        id = 1;
+        hasbeenBorrowed = "N";
     }
 
     public long getId() {

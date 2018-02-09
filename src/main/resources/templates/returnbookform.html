@@ -31,7 +31,7 @@
 <div class="subhead"> List of Borrowed Books in JBC Library </div>
 <form action="#"
       th:action="@{/processreturn}"
-      th:object="${returnbook}"
+      th:object="${books}"
       th:method="post">
 
     <div class="row">
@@ -41,6 +41,7 @@
         <div class="col-sm">ISBN</div>
         <div class="col-sm">Image</div>
         <div class="col-sm">Has Been Borrowed</div>
+        <div class="col-sm">Checkin</div>
     </div>
     <div class="row" th:each="book : ${books}">
         <div class="col-sm" th:text="${book.title}"></div>
@@ -49,16 +50,8 @@
         <div class="col-sm" th:text="${book.isbn}"></div>
         <div class="col-sm" th:text="${book.image}"></div>
         <div class="col-sm" th:text="${book.hasbeenBorrowed}"></div>
+        <div class="col-sm"><a th:href="@{/processreturn(id=${book.id})}">Return</a></div>
     </div>
-
-    <input type="hidden" th:field="*{id}" />
-    Title:<input type="text" th:field="*{title}" />
-    <span th:if="${#fields.hasErrors('title')}"
-          th:errors="*{title}"></span><br />
-
-
-    <br />
-    <input type="submit" value="Return" />
 
 
 </form>

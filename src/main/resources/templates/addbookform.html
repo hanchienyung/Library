@@ -32,7 +32,8 @@
       th:action="@{/processadd}"
       th:object="${book}"
       th:method="post">
-      <input type="hidden" th:field="*{id}" />
+
+     <input type="hidden" th:field="*{id}" />
      Title:<input type="text" th:field="*{title}" />
      <span th:if="${#fields.hasErrors('title')}"
            th:errors="*{title}"></span><br />
@@ -57,6 +58,5 @@
 
     <input type="submit" value="Add" />
 </form>
-System.out.println("title is " + book.title);
 </body>
 </html>

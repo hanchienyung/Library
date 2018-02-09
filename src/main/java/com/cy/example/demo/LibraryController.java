@@ -4,12 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import java.util.List;
+
+import static java.lang.Long.parseLong;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @Controller
 public class LibraryController {
@@ -21,13 +23,8 @@ public class LibraryController {
     @Autowired
     BookRepository bookRepository;
 
-    @Autowired
-    AvailablebookRepository availablebookRepository;
 
-    @Autowired
-    BorrowedbookRepository borrowedbookRepository;
-
-     @RequestMapping("/")
+    @RequestMapping("/")
      public String listLibraries(Model model) {
          model.addAttribute("libraries", libraryRepository.findAll());
          return "mainpage";
@@ -53,13 +50,13 @@ public class LibraryController {
 
     @RequestMapping("/borrowbook")
     public String borrowbookForm(Model model) {
-        model.addAttribute("availablebooks", availablebookRepository.findByHasbeenBorrowed("N"));
+        model.addAttribute("books", bookRepository.findBookByHasbeenBorrowed("N"));
         return "borrowbookform";
     }
 
     @RequestMapping("/returnbook")
     public String returnbookForm(Model model) {
-        model.addAttribute("borrowedbooks", borrowedbookRepository.findByHasbeenBorrowed("Y"));
+        model.addAttribute("books", bookRepository.findBookByHasbeenBorrowed("Y"));
         return "returnbookform";
     }
 
@@ -73,6 +70,36 @@ public class LibraryController {
         return "redirect:/";
     }
 
+    @RequestMapping(value="/processborrow", params={"id"}, method=GET)
+    public String processborrowForm( @RequestParam("id") String id, Model model)
+    {
+        System.out.println("Entering processborrowform id = " +id);
+        List <Book> books = bookRepository.findBookById(Long.parseLong(id));
+        for (Book book: books) {
+            book.setHasbeenBorrowed("Y");
+            bookRepository.save(book);
+        }
+
+      /*  if (result.hasErrors()){
+            return "borrowbookform";
+        }*/
+
+        return "redirect:/";
+    }
+
+  /*  @RequestMapping("/processborrow/{id}")
+    public String processborrowForm( @PathVariable("id") String id, Model model)
+    {
+        System.out.println("Entering processborrowform id = " +id);
+
+      *//*  if (result.hasErrors()){
+            return "borrowbookform";
+        }
+        bookRepository.save(book); *//*
+        return "redirect:/";
+    }
+    */
+
     @PostMapping("/processadd")
     public String processaddForm(@Valid Book book, BindingResult result)
     {
@@ -83,23 +110,19 @@ public class LibraryController {
         return "redirect:/";
     }
 
-    @PostMapping("/processborrow")
-    public String processborrowForm(@Valid Book book, BindingResult result)
-    {
-        if (result.hasErrors()){
-            return "borrowbookform";
-        }
-        bookRepository.save(book);
-        return "redirect:/";
-    }
 
-    @PostMapping("/processreturn")
-    public String processreturnForm(@Valid Book book, BindingResult result)
+    @RequestMapping(value="/processreturn", params={"id"}, method=GET)
+    public String processreturnForm(@RequestParam("id") String id, Model model)
     {
-        if (result.hasErrors()){
+        List <Book> books = bookRepository.findBookById(Long.parseLong(id));
+        for (Book book: books) {
+            book.setHasbeenBorrowed("N");
+            bookRepository.save(book);
+        }
+       /* if (result.hasErrors()){
             return "returnbookform";
         }
-        bookRepository.save(book);
+        bookRepository.save(book); */
         return "redirect:/";
     }
 
