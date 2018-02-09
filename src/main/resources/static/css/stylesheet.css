@@ -19,6 +19,13 @@
     font-family:'Roboto';
 }
 
+.reporthead{
+    font-weight:normal;
+    font-size:20px;
+    text-underline: black;
+    font-family:'Roboto';
+}
+
 .bluetext {
     color: #192580;
 }
@@ -28,5 +35,5 @@
 
 img{
 
-    width:500px;
+    width:100px;
 }

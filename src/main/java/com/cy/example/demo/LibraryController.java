@@ -73,7 +73,7 @@ public class LibraryController {
     @RequestMapping(value="/processborrow", params={"id"}, method=GET)
     public String processborrowForm( @RequestParam("id") String id, Model model)
     {
-        System.out.println("Entering processborrowform id = " +id);
+        //System.out.println("Entering processborrowform id = " +id);
         List <Book> books = bookRepository.findBookById(Long.parseLong(id));
         for (Book book: books) {
             book.setHasbeenBorrowed("Y");
@@ -83,22 +83,9 @@ public class LibraryController {
       /*  if (result.hasErrors()){
             return "borrowbookform";
         }*/
-
-        return "redirect:/";
+       return "redirect:/";
     }
 
-  /*  @RequestMapping("/processborrow/{id}")
-    public String processborrowForm( @PathVariable("id") String id, Model model)
-    {
-        System.out.println("Entering processborrowform id = " +id);
-
-      *//*  if (result.hasErrors()){
-            return "borrowbookform";
-        }
-        bookRepository.save(book); *//*
-        return "redirect:/";
-    }
-    */
 
     @PostMapping("/processadd")
     public String processaddForm(@Valid Book book, BindingResult result)
@@ -123,6 +110,7 @@ public class LibraryController {
             return "returnbookform";
         }
         bookRepository.save(book); */
+
         return "redirect:/";
     }
 

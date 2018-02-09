@@ -19,13 +19,21 @@
     font-family:'Roboto';
 }
 
-
-
-img{
-
-    width:500px;
+.reporthead{
+    font-weight:normal;
+    font-size:20px;
+    text-underline: black;
+    font-family:'Roboto';
 }
 
 .bluetext {
     color: #192580;
+}
+
+
+
+
+img{
+
+    width:100px;
 }

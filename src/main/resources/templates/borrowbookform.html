@@ -33,22 +33,22 @@
       th:object="${books}"
       method="post">
 <div class="subhead"> List of Available Books in JBC Library </div>
-
+<br />
     <div class="row">
-        <div class="col-sm">Title</div>
-        <div class="col-sm">Author</div>
-        <div class="col-sm">Year Published</div>
-        <div class="col-sm">ISBN</div>
-        <div class="col-sm">Image</div>
-        <div class="col-sm">Has Been Borrowed</div>
-        <div class="col-sm">Checkout</div>
+        <div class="col-sm reporthead bluetext">Title</div>
+        <div class="col-sm reporthead bluetext">Author</div>
+        <div class="col-sm reporthead bluetext">Year Published</div>
+        <div class="col-sm reporthead bluetext">ISBN</div>
+        <div class="col-sm reporthead bluetext">Image</div>
+        <div class="col-sm reporthead bluetext">Has Been Borrowed</div>
+        <div class="col-sm reporthead bluetext">Checkout</div>
     </div>
     <div class="row" th:each="book : ${books}">
         <div class="col-sm" th:text="${book.title}"></div>
         <div class="col-sm" th:text="${book.author}"></div>
         <div class="col-sm" th:text="${book.publicationYr}"></div>
         <div class="col-sm" th:text="${book.isbn}"></div>
-        <div class="col-sm" th:text="${book.image}"></div>
+        <div class="col-sm"><img th:src="@{${book.image}}" /></div>
         <div class="col-sm" th:text="${book.hasbeenBorrowed}"></div>
         <div class="col-sm"><a th:href="@{/processborrow(id=${book.id})}">Borrow</a></div>
     </div>
