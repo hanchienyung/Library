@@ -94,6 +94,9 @@ public class LibraryController {
         if (result.hasErrors()){
             return "addbookform";
         }
+        if (book.getImage().isEmpty()){
+            book.setImage("http://moziru.com/images/cover-clipart-school-book-5.jpg");
+        }
         bookRepository.save(book);
         return "redirect:/";
     }

@@ -44,10 +44,19 @@ img{
     width:100px;
 }
 
-mainpagehtml {
-    background: url(../images/library.jpeg) no-repeat center center fixed;
+.librarybg {
+    background-image: url("../images/library.jpeg");
+    background-repeat: no-repeat, repeat;
+    backgrouncenter: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
+
+.active {
+    background-color: deepskyblue;
+}
+
+
+
